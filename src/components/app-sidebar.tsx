@@ -6,7 +6,7 @@ import {
   List,
   Sparkles,
   Download,
-  Gift,
+  Briefcase,
   Send,
   Mail,
   ChevronUp,
@@ -37,7 +37,7 @@ const databaseItems = [
 ]
 
 const outreachItems = [
-  { key: "raise", label: "Raise", icon: Gift },
+  { key: "raise", label: "Raise", icon: Briefcase },
   { key: "campaigns", label: "Campaigns", icon: Send },
   { key: "email", label: "Email Accounts", icon: Mail },
 ]
@@ -90,7 +90,7 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenuButton
                   isActive={activeTab === item.key}
                   onClick={() => setActiveTab(item.key)}
-                  className={`w-full justify-start cursor-pointer transition-colors text-base px-3 flex items-center
+                  className={`mt-2 w-full justify-start cursor-pointer transition-colors text-base px-3 flex items-center
                     ${activeTab === item.key
                       ? 'bg-black text-white font-bold rounded-xl py-3.5'
                       : 'text-foreground hover:bg-muted rounded-lg py-3'}
@@ -104,14 +104,14 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarGroup>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-xs text-muted-foreground px-3 pt-6 pb-2 tracking-widest">OUTREACH</SidebarGroupLabel>
+          <SidebarGroupLabel className="mt-2 text-xs text-muted-foreground px-3 pt-6 pb-2 tracking-widest">OUTREACH</SidebarGroupLabel>
           <SidebarMenu>
             {outreachItems.map((item) => (
               <SidebarMenuItem key={item.key}>
                 <SidebarMenuButton
                   isActive={activeTab === item.key}
                   onClick={() => setActiveTab(item.key)}
-                  className={`w-full justify-start cursor-pointer transition-colors text-base px-3 flex items-center
+                  className={`mt-2 w-full justify-start cursor-pointer transition-colors text-base px-3 flex items-center
                     ${activeTab === item.key
                       ? 'bg-black text-white font-bold rounded-xl py-3.5'
                       : 'text-foreground hover:bg-muted rounded-lg py-3'}
@@ -129,9 +129,9 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
         <div className="relative" ref={userMenuRef}>
           {userMenuOpen && (
             <div
-              className={`absolute bottom-16 left-1/2 -translate-x-1/2 mb-2 w-56 rounded-xl bg-muted/30 shadow-lg border border-muted-foreground/10 backdrop-blur z-50 flex flex-col p-2 transition-all duration-200 ease-out
-                ${userMenuOpen ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' : 'opacity-0 scale-95 translate-y-2 pointer-events-none'}`}
-              style={{
+            className={`absolute bottom-16 left-1/2 -translate-x-1/2 mb-2 w-56 rounded-xl bg-muted/30 shadow-lg border border-muted-foreground/10 backdrop-blur z-50 flex flex-col p-2 transition-all duration-200 ease-out
+              ${userMenuOpen ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' : 'opacity-0 scale-95 translate-y-2 pointer-events-none'}`}
+                          style={{
                 transformOrigin: 'bottom center',
               }}
             >
@@ -144,8 +144,8 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
                     // Add logic for each action here
                   }}
                 >
-                  <item.icon className={`w-5 h-5 ${item.danger ? "text-red-500" : ""}`} />
-                  {item.label}
+<item.icon className={`w-5 h-5 ${item.danger ? "text-red-500" : ""}`} />
+{item.label}
                 </button>
               ))}
             </div>
@@ -163,9 +163,8 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
               <span className="font-medium truncate">{user.name}</span>
               <span className="text-xs text-muted-foreground truncate">{user.email}</span>
             </div>
-            <span
-              className={`ml-auto text-muted-foreground transition-transform duration-200 ${userMenuOpen ? 'rotate-180' : ''}`}
-            >
+            <span className={`ml-auto text-muted-foreground transition-transform duration-200 ${userMenuOpen ? 'rotate-180' : ''}`}>
+
               <ChevronUp />
             </span>
           </div>
