@@ -46,7 +46,7 @@ export default function Dashboard() {
           <div className="bg-white shadow rounded-lg p-6">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center gap-2">
     <House className="w-8 h-8" />
-    Dashboard
+    d
   </h1>            <h2 className="text-xl font-semibold mb-2">Account Activity</h2>
 
           </div>

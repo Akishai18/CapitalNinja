@@ -27,19 +27,21 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
 } from "@/components/ui/sidebar"
+import { useRouter, usePathname } from "next/navigation"
+import Link from "next/link"
 
 const databaseItems = [
-  { key: "dashboard", label: "Dashboard", icon: LayoutGrid },
-  { key: "investors", label: "Investors", icon: Users },
-  { key: "lists", label: "Lists", icon: List },
-  { key: "enrichment", label: "Enrichment", icon: Sparkles },
-  { key: "exports", label: "Exports", icon: Download },
+  { key: "dashboard", label: "Dashboard", icon: LayoutGrid, path: "/dashboard/dashboard" },
+  { key: "investors", label: "Investors", icon: Users, path: "/dashboard/investors" },
+  { key: "lists", label: "Lists", icon: List, path: "/dashboard/lists" },
+  { key: "enrichment", label: "Enrichment", icon: Sparkles, path: "/dashboard/enrichment" },
+  { key: "exports", label: "Exports", icon: Download, path: "/dashboard/exports" },
 ]
 
 const outreachItems = [
-  { key: "raise", label: "Raise", icon: Briefcase },
-  { key: "campaigns", label: "Campaigns", icon: Send },
-  { key: "email", label: "Email Accounts", icon: Mail },
+  { key: "raise", label: "Raise", icon: Briefcase, path: "/dashboard/raise" },
+  { key: "campaigns", label: "Campaigns", icon: Send, path: "/dashboard/campaigns" },
+  { key: "email", label: "Email Accounts", icon: Mail, path: "/dashboard/email" },
 ]
 
 const user = {
@@ -56,6 +58,8 @@ const userMenuItems = [
 ]
 
 export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
+  const router = useRouter()
+  const pathname = usePathname()
   const [activeTab, setActiveTab] = React.useState("dashboard")
   const [userMenuOpen, setUserMenuOpen] = React.useState(false)
   const userMenuRef = React.useRef<HTMLDivElement>(null)
@@ -87,18 +91,19 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenu>
             {databaseItems.map((item) => (
               <SidebarMenuItem key={item.key}>
-                <SidebarMenuButton
-                  isActive={activeTab === item.key}
-                  onClick={() => setActiveTab(item.key)}
-                  className={`mt-2 w-full justify-start cursor-pointer transition-colors text-base px-3 flex items-center
-                    ${activeTab === item.key
-                      ? 'bg-black text-white font-bold rounded-xl py-3.5'
-                      : 'text-foreground hover:bg-muted rounded-lg py-3'}
-                  `}
-                >
-                  <item.icon className="mr-3 w-5 h-5" />
-                  {item.label}
-                </SidebarMenuButton>
+                <Link href={item.path} className="w-full">
+                  <SidebarMenuButton
+                    isActive={pathname === item.path}
+                    className={`mt-2 w-full justify-start cursor-pointer transition-colors text-base px-3 flex items-center
+                      ${pathname === item.path
+                        ? 'bg-black text-white font-bold rounded-xl py-3.5'
+                        : 'text-foreground hover:bg-muted rounded-lg py-3'}
+                    `}
+                  >
+                    <item.icon className="mr-3 w-5 h-5" />
+                    {item.label}
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
             ))}
           </SidebarMenu>
@@ -108,18 +113,19 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenu>
             {outreachItems.map((item) => (
               <SidebarMenuItem key={item.key}>
-                <SidebarMenuButton
-                  isActive={activeTab === item.key}
-                  onClick={() => setActiveTab(item.key)}
-                  className={`mt-2 w-full justify-start cursor-pointer transition-colors text-base px-3 flex items-center
-                    ${activeTab === item.key
-                      ? 'bg-black text-white font-bold rounded-xl py-3.5'
-                      : 'text-foreground hover:bg-muted rounded-lg py-3'}
-                  `}
-                >
-                  <item.icon className="mr-3 w-5 h-5" />
-                  {item.label}
-                </SidebarMenuButton>
+                <Link href={item.path} className="w-full">
+                  <SidebarMenuButton
+                    isActive={pathname === item.path}
+                    className={`mt-2 w-full justify-start cursor-pointer transition-colors text-base px-3 flex items-center
+                      ${pathname === item.path
+                        ? 'bg-black text-white font-bold rounded-xl py-3.5'
+                        : 'text-foreground hover:bg-muted rounded-lg py-3'}
+                    `}
+                  >
+                    <item.icon className="mr-3 w-5 h-5" />
+                    {item.label}
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
             ))}
           </SidebarMenu>
