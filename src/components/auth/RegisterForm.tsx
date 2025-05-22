@@ -9,7 +9,7 @@ export default function AuthForm() {
 
   const handleTestLogin = async () => {
     try {
-      await router.push('/dashboard');
+      await router.push('/dashboard/dashboard');
     } catch (error) {
       console.error('Navigation failed:', error);
       // Fallback to window.location if router.push fails

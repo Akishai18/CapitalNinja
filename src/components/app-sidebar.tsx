@@ -92,17 +92,17 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
             {databaseItems.map((item) => (
               <SidebarMenuItem key={item.key}>
                 <Link href={item.path} className="w-full">
-                  <SidebarMenuButton
+                <SidebarMenuButton
                     isActive={pathname === item.path}
-                    className={`mt-2 w-full justify-start cursor-pointer transition-colors text-base px-3 flex items-center
+                  className={`mt-2 w-full justify-start cursor-pointer transition-colors text-base px-3 flex items-center
                       ${pathname === item.path
-                        ? 'bg-black text-white font-bold rounded-xl py-3.5'
-                        : 'text-foreground hover:bg-muted rounded-lg py-3'}
-                    `}
-                  >
-                    <item.icon className="mr-3 w-5 h-5" />
-                    {item.label}
-                  </SidebarMenuButton>
+                      ? 'bg-black text-white font-bold rounded-xl py-3.5'
+                      : 'text-foreground hover:bg-muted rounded-lg py-3'}
+                  `}
+                >
+                  <item.icon className="mr-3 w-5 h-5" />
+                  {item.label}
+                </SidebarMenuButton>
                 </Link>
               </SidebarMenuItem>
             ))}
@@ -114,17 +114,17 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
             {outreachItems.map((item) => (
               <SidebarMenuItem key={item.key}>
                 <Link href={item.path} className="w-full">
-                  <SidebarMenuButton
+                <SidebarMenuButton
                     isActive={pathname === item.path}
-                    className={`mt-2 w-full justify-start cursor-pointer transition-colors text-base px-3 flex items-center
+                  className={`mt-2 w-full justify-start cursor-pointer transition-colors text-base px-3 flex items-center
                       ${pathname === item.path
-                        ? 'bg-black text-white font-bold rounded-xl py-3.5'
-                        : 'text-foreground hover:bg-muted rounded-lg py-3'}
-                    `}
-                  >
-                    <item.icon className="mr-3 w-5 h-5" />
-                    {item.label}
-                  </SidebarMenuButton>
+                      ? 'bg-black text-white font-bold rounded-xl py-3.5'
+                      : 'text-foreground hover:bg-muted rounded-lg py-3'}
+                  `}
+                >
+                  <item.icon className="mr-3 w-5 h-5" />
+                  {item.label}
+                </SidebarMenuButton>
                 </Link>
               </SidebarMenuItem>
             ))}
